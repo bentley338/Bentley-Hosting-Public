@@ -130,5 +130,32 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset();
         });
     }
+
+    // Fungsionalitas Transisi Halaman
+    const internalLinks = document.querySelectorAll('a[href^="./"], a[href$=".html"]'); // Pilih tautan internal
+
+    internalLinks.forEach(link => {
+        // Abaikan tautan ke bagian dalam halaman yang sama (#anchor)
+        if (link.hash) return;
+
+        // Abaikan tautan ke luar website atau target="_blank"
+        if (link.hostname !== window.location.hostname && link.target !== '_blank') return;
+
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah navigasi default
+
+            const destination = this.href;
+
+            document.body.classList.add('page-transition-out'); // Tambahkan kelas transisi keluar
+
+            // Navigasi setelah animasi selesai (sesuaikan durasi dengan CSS)
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 400); // Durasi harus sama atau sedikit lebih lama dari transisi CSS
+        });
+    });
+
+    // Tambahkan kelas transisi masuk saat halaman dimuat
+    document.body.classList.add('page-transition-in');
 });
 
