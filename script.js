@@ -130,30 +130,5 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset();
         });
     }
-
-    // Fungsionalitas Lazy Loading Gambar
-    const lazyLoadImages = document.querySelectorAll('.lazy-load-img');
-
-    if ('IntersectionObserver' in window) {
-        const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src; // Ganti src dengan data-src
-                    img.classList.remove('lazy-load-img'); // Hapus class lazy-load
-                    observer.unobserve(img); // Hentikan observasi
-                }
-            });
-        });
-
-        lazyLoadImages.forEach(img => {
-            lazyLoadObserver.observe(img);
-        });
-    } else {
-        // Fallback untuk browser yang tidak mendukung Intersection Observer
-        lazyLoadImages.forEach(img => {
-            img.src = img.dataset.src;
-        });
-    }
 });
 
