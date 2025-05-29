@@ -101,39 +101,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fungsionalitas Form Kontak (hanya untuk contact.html)
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form submit secara default
+    // Fungsionalitas Kirim Form ke WhatsApp
+    const whatsappContactForm = document.getElementById('whatsapp-contact-form');
+    if (whatsappContactForm) {
+        whatsappContactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form submit default
 
-            // Di sini Anda bisa menambahkan logika untuk mengirim data form.
-            // Untuk website statis HTML/CSS/JS, Anda bisa menggunakan layanan seperti Formspree.io
-            // Contoh: Mengirim data ke Formspree (ganti YOUR_FORMSPREE_ENDPOINT dengan endpoint Anda)
-            // const formData = new FormData(this);
-            // fetch('https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT', {
-            //     method: 'POST',
-            //     body: formData,
-            //     headers: {
-            //         'Accept': 'application/json'
-            //     }
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     if (data.ok) {
-            //         alert('Pesan Anda berhasil terkirim!');
-            //         this.reset(); // Reset form
-            //     } else {
-            //         alert('Terjadi kesalahan saat mengirim pesan.');
-            //     }
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            //     alert('Terjadi kesalahan jaringan.');
-            // });
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
-            // Untuk demo, kita hanya akan menampilkan pesan sukses
-            alert('Pesan Anda berhasil terkirim! (Fungsionalitas backend perlu diintegrasikan)');
+            // Nomor WhatsApp Anda
+            const phoneNumber = '6285810073341'; // Ganti dengan nomor WhatsApp Anda
+
+            // Pesan yang akan diisi otomatis di WhatsApp
+            const prefilledMessage = `Halo Bentley Hosting,%0ASaya ingin bertanya tentang layanan Anda.%0ANama: ${name}%0AEmail: ${email}%0APesan: ${message}`;
+
+            // Encode pesan agar aman untuk URL
+            const encodedMessage = encodeURIComponent(prefilledMessage);
+
+            // Buat URL WhatsApp
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Buka WhatsApp di tab baru
+            window.open(whatsappUrl, '_blank');
+
+            // Opsional: Reset form setelah dikirim
             this.reset();
         });
     }
