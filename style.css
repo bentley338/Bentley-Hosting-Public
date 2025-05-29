@@ -11,6 +11,8 @@
     --card-bg-dark: #1e1e1e;
     --border-dark: rgba(255, 255, 255, 0.1);
     --shadow-dark: rgba(0, 0, 0, 0.5);
+    --input-bg-dark: #2a2a2a;
+    --input-border-dark: #444;
 }
 
 /* Variabel CSS untuk Tema Terang */
@@ -23,6 +25,8 @@ body.light-mode {
     --card-bg-dark: #ffffff;
     --border-dark: rgba(0, 0, 0, 0.1);
     --shadow-dark: rgba(0, 0, 0, 0.1);
+    --input-bg-dark: #f8f8f8;
+    --input-border-dark: #ccc;
 }
 
 /* Styling Umum */
@@ -284,11 +288,10 @@ header {
     transform: scale(1.1);
 }
 
-/* Bagian Konten Utama (untuk halaman Services, Testimonials, Contact) */
+/* Bagian Konten Utama (untuk halaman Services, Testimonials, Contact, About, FAQ) */
 .main-content {
     flex-grow: 1;
     padding: 30px 20px;
-    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .section-block {
@@ -453,6 +456,179 @@ header {
     text-decoration: underline;
 }
 
+/* Contact Form */
+.contact-form {
+    background: linear-gradient(135deg, var(--card-bg-dark), var(--bg-dark));
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--input-border-dark);
+    border-radius: 8px;
+    background-color: var(--input-bg-dark);
+    color: var(--text-dark);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.3);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* About Us Page Specific */
+.about-content {
+    background: linear-gradient(135deg, var(--card-bg-dark), var(--bg-dark));
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.about-content h3 {
+    color: var(--secondary-color);
+    font-size: 1.6em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    position: relative;
+    padding-left: 20px;
+}
+
+.about-content h3::before {
+    content: '\2022'; /* Bullet point */
+    color: var(--accent-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.about-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-content ul li {
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    position: relative;
+    padding-left: 25px;
+}
+
+.about-content ul li::before {
+    content: '\2713'; /* Checkmark icon */
+    font-family: 'Font Awesome 6 Free'; /* Use Font Awesome font */
+    font-weight: 900; /* Solid icon */
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.1em;
+}
+
+/* FAQ Page Specific */
+.faq-item {
+    background: linear-gradient(135deg, var(--card-bg-dark), var(--bg-dark));
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--shadow-dark);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+    opacity: 0;
+    padding-top: 0;
+    color: var(--text-dark);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Sesuaikan dengan tinggi konten maksimal */
+    opacity: 1;
+    padding-top: 15px;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+
 /* Footer / Bottom Navigation */
 .bottom-nav {
     position: fixed;
@@ -500,11 +676,69 @@ header {
     transform: translateY(-2px);
 }
 
-/* Animasi Halaman */
+/* Tombol Scroll to Top */
+#scroll-to-top {
+    position: fixed;
+    bottom: 80px; /* Di atas bottom-nav */
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 99;
+}
+
+#scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#scroll-to-top:hover {
+    transform: translateY(-5px);
+    background-color: var(--secondary-color);
+}
+
+
+/* Animasi Halaman dan Elemen */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Kelas untuk Scroll Reveal JS */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Responsif */
 @media (max-width: 768px) {
@@ -603,6 +837,13 @@ header {
         font-size: 1.5em;
         bottom: 15px;
         right: 15px;
+    }
+
+    #scroll-to-top {
+        bottom: 80px; /* Sesuaikan posisi agar tidak tumpang tindih dengan menu mobile */
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
     }
 }
 
