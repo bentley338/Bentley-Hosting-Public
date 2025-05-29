@@ -30,19 +30,20 @@
                 </div>
 
                 <div class="contact-form reveal-item">
-                    <h3>Kirim Pesan Langsung via WhatsApp</h3>
-                    <p class="form-note">
-                        Klik tombol di bawah ini untuk memulai chat WhatsApp dengan kami.
-                        Mohon sertakan nama, email, dan pesan Anda di dalam chat WhatsApp.
-                    </p>
-                    <a 
-                        href="https://wa.me/6285810073341?text=Halo%20Bentley%20Hosting%2C%0ASaya%20ingin%20bertanya%20tentang%20layanan%20Anda.%0ANama%3A%20%0AEmail%3A%20%0APesan%3A%20" 
-                        target="_blank" 
-                        class="btn primary"
-                    >
-                        <span>Kirim Pesan via WhatsApp <i class="fab fa-whatsapp"></i></span>
-                    </a>
-                </div>
+                    <h3>Kirim Pesan Langsung</h3>
+                    <form id="whatsapp-contact-form">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="name" name="name" required placeholder="Nama Lengkap Anda">
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Email Anda">
+
+                        <label for="message">Pesan:</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
+
+                        <button type="submit">Kirim Pesan</button>
+                    </form>
+                    </div>
             </section>
         </section>
     </div>
