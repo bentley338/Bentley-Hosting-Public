@@ -114,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Nomor WhatsApp Anda
             const phoneNumber = '6285810073341'; // Ganti dengan nomor WhatsApp Anda
 
-            // PESAN YANG DIPERBAIKI: Menggunakan \n untuk baris baru, bukan %0A
+            // Pesan yang akan diisi otomatis di WhatsApp
             const prefilledMessage = `Halo Bentley Hosting,\nSaya ingin bertanya tentang layanan Anda.\nNama: ${name}\nEmail: ${email}\nPesan: ${message}`;
 
-            // Encode pesan agar aman untuk URL - ini wajib!
+            // Encode pesan agar aman untuk URL
             const encodedMessage = encodeURIComponent(prefilledMessage);
 
             // Buat URL WhatsApp
@@ -128,6 +128,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Opsional: Reset form setelah dikirim
             this.reset();
+        });
+    }
+
+    // Fungsionalitas Lazy Loading Gambar
+    const lazyLoadImages = document.querySelectorAll('.lazy-load-img');
+
+    if ('IntersectionObserver' in window) {
+        const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src; // Ganti src dengan data-src
+                    img.classList.remove('lazy-load-img'); // Hapus class lazy-load
+                    observer.unobserve(img); // Hentikan observasi
+                }
+            });
+        });
+
+        lazyLoadImages.forEach(img => {
+            lazyLoadObserver.observe(img);
+        });
+    } else {
+        // Fallback untuk browser yang tidak mendukung Intersection Observer
+        lazyLoadImages.forEach(img => {
+            img.src = img.dataset.src;
         });
     }
 });
