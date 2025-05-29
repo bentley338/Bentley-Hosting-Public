@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Sembunyikan Preloader setelah halaman dimuat
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('hidden'); // Menambahkan kelas hidden untuk fade out
+        setTimeout(() => {
+            preloader.style.display = 'none'; // Sembunyikan sepenuhnya setelah transisi
+        }, 500); // Sesuaikan dengan durasi transisi CSS preloader
+    }
+
     // Fungsionalitas Toggle Mode Gelap/Terang
     const toggleModeButton = document.querySelector('.toggle-mode');
     if (toggleModeButton) {
